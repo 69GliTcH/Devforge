@@ -168,12 +168,13 @@ const StartupForm = () => {
 
             <Button
                 type="submit"
-                className="startup-form_btn text-white"
+                className="startup-form_btn text-white group"
                 disabled={isPending}
             >
                 {isPending ? "Submitting..." : "Submit Your Pitch"}
-                <Send className="size-6 ml-2" />
+                <Send className="size-6 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Button>
+
         </form>
     );
 };
