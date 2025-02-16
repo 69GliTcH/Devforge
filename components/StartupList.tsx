@@ -29,7 +29,7 @@ export default function StartupList({ posts, query }: { posts: StartupCardType[]
 
     return (
         <section className="section_container">
-            <p className="text-30-semibold">
+            <p className="text-30-semibold text-center">
                 {query ? `Search results for "${query}"` : "All Projects"}
             </p>
 

@@ -10,6 +10,8 @@ export const STARTUPS_QUERY =
     _id, name, image, bio,username
   }, 
   views,
+  dislikes,
+  likes,
   description,
   category,
   image,
@@ -25,6 +27,8 @@ export const STARTUP_BY_ID_QUERY =
     _id, name, username, image, bio
   }, 
   views,
+  dislikes,
+  likes,
   description,
   category,
   image,
@@ -71,6 +75,8 @@ export const STARTUPS_BY_AUTHOR_QUERY =
     _id, name, image, bio,username
   }, 
   views,
+  likes,
+  dislikes,
   description,
   category,
   image,
@@ -94,6 +100,8 @@ export const PLAYLIST_BY_SLUG_QUERY =
       bio,username
     },
     views,
+    likes,
+    dislikes,
     description,
     category,
     image,

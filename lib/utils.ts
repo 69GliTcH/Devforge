@@ -13,6 +13,15 @@ export function formatDate(date: string) {
   });
 }
 
+export function formatTime(date: string) {
+  return new Date(date).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
+}
+
 export function parseServerActionResponse<T>(response: T) {
   return JSON.parse(JSON.stringify(response));
 }

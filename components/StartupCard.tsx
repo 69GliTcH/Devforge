@@ -1,4 +1,4 @@
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatDate, formatTime } from "@/lib/utils";
 import { EyeIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,22 +14,23 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
         <li className='startup-card group'>
             <div className='flex-between'>
                 <p className='startup-card-date'>
-                    {formatDate(_createdAt)}
+                    {formatDate(_createdAt)} <br />
+                    {formatTime(post?._createdAt)}
                 </p>
                 <div className='flex gap-1.5'>
                     <EyeIcon className='size-6 text-gray-900' />
                     <span className='text-16-medium'>{views}</span>
                 </div>
             </div>
-            <div className='flex-between mt-5 gap-5 bg-gray-300 p-2 rounded-xl'>
+            <div className='flex-between mt-5 gap-5 bg-gray-200 p-2 rounded-xl'>
                 <div className='flex-1'>
                     <Link href={`/user/${author?._id}`}>
                         <p className='text-16-medium line-clamp-1'>
                             {author?.name}
                         </p>
                         <p>
-                        @{author?.username}
-                        </p> 
+                            @{author?.username}
+                        </p>
                     </Link>
                 </div>
                 <Link href={`/user/${author?._id}`}>
@@ -42,11 +43,11 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                     />
                 </Link>
             </div>
-                    <Link href={`/startup/${_id}`}>
-                        <h3 className='text-26-semibold line-clamp-1'>
-                            {title}
-                        </h3>
-                    </Link>
+            <Link href={`/startup/${_id}`}>
+                <h3 className='text-26-semibold line-clamp-1'>
+                    {title}
+                </h3>
+            </Link>
             <Link href={`/startup/${_id}`}>
                 <p className='startup-card_desc'>
                     {description}

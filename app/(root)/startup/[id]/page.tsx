@@ -5,7 +5,7 @@ import {
   STARTUP_BY_ID_QUERY,
 } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatTime } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,7 +35,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <>
       <section className="pink_container !min-h-[230px]">
-        <p className="tag">{formatDate(post?._createdAt)}</p>
+        <p className="tag text-center">{formatDate(post?._createdAt)}<br/>{formatTime(post?._createdAt)}</p>
 
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
@@ -91,7 +91,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         {editorPosts?.length > 0 && (
           <div className="max-w-4xl mx-auto">
-            <p className="text-30-semibold">Editor Picks</p>
+            <p className="text-30-semibold">Featured</p>
 
             <ul className="mt-7 card_grid-sm">
               {editorPosts.map((post: StartupCardType, i: number) => (
