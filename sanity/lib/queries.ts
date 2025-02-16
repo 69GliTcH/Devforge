@@ -91,7 +91,7 @@ export const PLAYLIST_BY_SLUG_QUERY =
       name,
       slug,
       image,
-      bio
+      bio,username
     },
     views,
     description,
