@@ -44,7 +44,7 @@ const workSans = localFont({
 
 export const metadata: Metadata = {
   title: "DevForge",
-  description: "Pitch your startup",
+  description: "Pitch Your Projects",
 
 };
 
