@@ -43,7 +43,7 @@ const workSans = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Pitchify",
+  title: "DevForge",
   description: "Pitch your startup",
 
 };
