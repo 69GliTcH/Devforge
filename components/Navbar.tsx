@@ -10,9 +10,11 @@ const Navbar = async () => {
     return (
         <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
             <nav className="flex justify-between items-center">
-                <Link href="/">
-                    <Image src="/logo.png" alt="logo" width={144} height={30} />
+                <Link href="/" className="flex items-center space-x-2">
+                    <Image src="/hammer.svg" alt="logo" width={30} height={30} />
+                    <span className="text-lg font-semibold">DevForge</span>
                 </Link>
+
 
                 <div className="flex items-center gap-5 text-black">
                     {session && session?.user ? (

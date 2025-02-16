@@ -1,13 +1,21 @@
 "use client";
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { cn } from "@/lib/utils"; // Ensure you have a utility function for class merging
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export function Tooltip({ content, children }: { content: string; children: React.ReactNode }) {
+    const [open, setOpen] = useState(false);
+
     return (
         <TooltipPrimitive.Provider delayDuration={200}>
-            <TooltipPrimitive.Root>
-                <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+            <TooltipPrimitive.Root open={open} onOpenChange={setOpen}>
+                <TooltipPrimitive.Trigger
+                    asChild
+                    onClick={() => setOpen(!open)} // Toggle on click
+                >
+                    {children}
+                </TooltipPrimitive.Trigger>
                 <TooltipPrimitive.Portal>
                     <TooltipPrimitive.Content
                         side="top"

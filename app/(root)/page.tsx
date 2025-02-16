@@ -14,12 +14,22 @@ export default async function Home({ searchParams }: { searchParams: { query?: s
   return (
     <>
       <section className="pink_container">
-        <h1 className="heading">Pitch Your Startup, <br /> Connect With Entrepreneurs</h1>
-        <p className="sub-heading !max-w-3xl">
-          Submit ideas, Vote on Pitches, and Get Noticed in Virtual Competitions.
+        {/* Content */}
+        <div className="flex items-center gap-2">
+          <p className="tag">DevForge</p>
+          <img src="/fire.gif" alt="fire" className="w-6 h-6 sm:w-8 sm:h-8" />
+        </div>
+
+        <h1 className="heading">
+          Where developers build,<br />showcase, and inspire.
+        </h1>
+        <p className="sub-heading">
+        Share your latest projects, from MVPs to fully-fledged applications, and let the world see your work.
         </p>
+
         <SearchForm query={query} />
       </section>
+
 
       {/* Move pagination logic to the client component */}
       <StartupList posts={posts} query={query} />

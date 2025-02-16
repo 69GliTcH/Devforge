@@ -95,7 +95,7 @@ const StartupForm = () => {
                     required
                     minLength={3}
                     maxLength={100}
-                    placeholder="Startup Title"
+                    placeholder="Project Title"
                 />
                 {errors.title && <p className="startup-form_error">{errors.title}</p>}
             </div>
@@ -115,7 +115,7 @@ const StartupForm = () => {
                     required
                     minLength={20}
                     maxLength={500}
-                    placeholder="Startup Description"
+                    placeholder="Project Description"
                 />
                 {errors.description && <p className="startup-form_error">{errors.description}</p>}
             </div>
@@ -135,7 +135,7 @@ const StartupForm = () => {
                     required
                     minLength={3}
                     maxLength={20}
-                    placeholder="Startup Category (Tech, Health, Education...)"
+                    placeholder="Project Category (Web, AIML...)"
                     value={category}
                     onChange={(e) => setCategory(e.target.value.toUpperCase())}
                 />
@@ -156,7 +156,7 @@ const StartupForm = () => {
                     className="startup-form_input"
                     required
                     type="url"
-                    placeholder="Startup Image URL"
+                    placeholder="Project Image URL"
                 />
                 {errors.link && <p className="startup-form_error">{errors.link}</p>}
             </div>
@@ -177,7 +177,7 @@ const StartupForm = () => {
                     height={300}
                     style={{ borderRadius: 20, overflow: "hidden" }}
                     textareaProps={{
-                        placeholder: "Briefly describe your idea and what problem it solves",
+                        placeholder: "Briefly describe your project and what problem it solves",
                         minLength: 10,
                     }}
                     previewOptions={{
@@ -193,7 +193,7 @@ const StartupForm = () => {
                 className="startup-form_btn text-white group flex items-center"
                 disabled={isPending}
             >
-                {isPending ? "Submitting..." : "Submit Your Pitch"}
+                {isPending ? "Submitting..." : "Post Your Project"}
                 <Send className="size-6 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Button>
         </form>
