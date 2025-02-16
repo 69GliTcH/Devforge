@@ -19,34 +19,34 @@ const Navbar = async () => {
                 <div className="flex items-center gap-5 text-black">
                     {session && session?.user ? (
                         <>
-                            <Link href="/startup/create">
+                        <div className="flex items-center gap-x-4">
+                            <Link href="/startup/create" className="flex items-center">
                                 <span className="max-sm:hidden">Create</span>
                                 <BadgePlus className="size-6 sm:hidden" />
                             </Link>
-
+                    
                             <form
                                 action={async () => {
                                     "use server";
-
                                     await signOut({ redirectTo: "/" });
                                 }}
+                                className="flex items-center"
                             >
-                                <button type="submit">
+                                <button type="submit" className="flex items-center">
                                     <span className="max-sm:hidden">Logout</span>
                                     <LogOut className="size-6 sm:hidden text-red-500" />
                                 </button>
                             </form>
-
-                            <Link href={`/user/${session?.id}`}>
+                    
+                            <Link href={`/user/${session?.id}`} className="flex items-center">
                                 <Avatar className="size-10">
-                                    <AvatarImage
-                                        src={session?.user?.image || ""}
-                                        alt={session?.user?.name || ""}
-                                    />
+                                    <AvatarImage src={session?.user?.image || ""} alt={session?.user?.name || ""} />
                                     <AvatarFallback>AV</AvatarFallback>
                                 </Avatar>
                             </Link>
-                        </>
+                        </div>
+                    </>
+                    
                     ) : (
                         <form
                             action={async () => {
