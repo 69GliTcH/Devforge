@@ -14,17 +14,14 @@ export default async function Home({ searchParams }: { searchParams: { query?: s
   return (
     <>
       <section className="pink_container">
-        {/* Content */}
-        <div className="flex items-center gap-2">
-          <p className="tag">DevForge</p>
-          <img src="/fire.gif" alt="fire" className="w-6 h-6 sm:w-8 sm:h-8" />
-        </div>
+        <p className="tag">DevForge</p>
+
 
         <h1 className="heading">
           Where developers build,<br />showcase, and inspire.
         </h1>
         <p className="sub-heading">
-        Share your latest projects, from MVPs to fully-fledged applications, and let the world see your work.
+          Share your latest projects, from MVPs to fully-fledged applications, and let the world see your work.
         </p>
 
         <SearchForm query={query} />
