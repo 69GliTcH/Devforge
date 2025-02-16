@@ -30,7 +30,7 @@ export default function StartupList({ posts, query }: { posts: StartupCardType[]
     return (
         <section className="section_container">
             <p className="text-30-semibold">
-                {query ? `Search results for "${query}"` : "All Startups"}
+                {query ? `Search results for "${query}"` : "All Projects"}
             </p>
 
             <ul className="mt-7 card_grid">
