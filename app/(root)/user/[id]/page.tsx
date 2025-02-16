@@ -34,15 +34,23 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                         className="profile_image"
                     />
 
-                    <p className="text-30-extrabold mt-7 text-center">
-                        @{user?.username}
-                    </p>
+                    <p className="text-30-extrabold mt-7 text-center">@{user?.username}</p>
                     <p className="mt-1 text-center text-14-normal">{user?.bio}</p>
+
+                    <a
+                        href={`https://github.com/${user?.username}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 block text-center bg-slate-600 text-white py-2 px-4 rounded-xl hover:bg-slate-800 transition"
+                    >
+                        Visit GitHub Profile
+                    </a>
                 </div>
+
 
                 <div className="flex-1 flex flex-col gap-5 lg:-mt-5">
                     <p className="text-30-bold">
-                        {session?.id === id ? "Your" : "All"} Projects
+                        {session?.id === id ? "Your" : `${user?.name}'s`} Projects
                     </p>
                     <ul className="card_grid-sm">
                         <Suspense fallback={<StartupCardSkeleton />}>
