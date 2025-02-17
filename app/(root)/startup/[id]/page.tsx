@@ -32,6 +32,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const parsedContent = md.render(post?.pitch || "");
 
+  console.log(post.image)
+  const imageSrc = post.image.includes("github.com") && !post.image.includes("?raw=true")
+  ? `${post.image}?raw=true`
+  : post.image;
   return (
     <>
       <section className="pink_container !min-h-[230px]">
@@ -43,7 +47,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
       <section className="section_container">
         <Image
-          src={post.image}
+          src={imageSrc}
           alt="thumbnail"
           width={600}
           height={450}
