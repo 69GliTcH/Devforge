@@ -10,6 +10,10 @@ export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 
 const StartupCard = ({ post }: { post: StartupCardType }) => {
     const { _createdAt, views, author: author, title, category, _id, description, image } = post;
+    const imageSrc = image && image.includes("github.com") && !image.includes("?raw=true")
+        ? `${image}?raw=true`
+        : image || '/default-placeholder.jpg';
+
     return (
         <li className='startup-card group'>
             <div className='flex-between'>
@@ -53,7 +57,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                     {description}
                 </p>
                 <Image
-                    src={image || '/default-placeholder.jpg'}  // Ensure a valid string
+                    src={imageSrc || '/default-placeholder.jpg'}  // Ensure a valid string
                     alt='Startup image'
                     width={500}
                     height={300}

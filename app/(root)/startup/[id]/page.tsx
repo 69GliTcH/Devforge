@@ -34,12 +34,16 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   console.log(post.image)
   const imageSrc = post.image.includes("github.com") && !post.image.includes("?raw=true")
-  ? `${post.image}?raw=true`
-  : post.image;
+    ? `${post.image}?raw=true`
+    : post.image.includes("drive.google.com")
+      ? post.image.replace(/https:\/\/drive\.google\.com\/file\/d\/([^/]+)\/view.*/, "https://drive.google.com/uc?id=$1")
+      : post.image;
+  console.log(imageSrc)
+
   return (
     <>
       <section className="pink_container !min-h-[230px]">
-        <p className="tag text-center">{formatDate(post?._createdAt)}<br/>{formatTime(post?._createdAt)}</p>
+        <p className="tag text-center">{formatDate(post?._createdAt)}<br />{formatTime(post?._createdAt)}</p>
 
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
