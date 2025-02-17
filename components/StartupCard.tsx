@@ -12,7 +12,9 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
     const { _createdAt, views, author: author, title, category, _id, description, image } = post;
     const imageSrc = image && image.includes("github.com") && !image.includes("?raw=true")
         ? `${image}?raw=true`
-        : image || '/default-placeholder.jpg';
+        : image && image.includes("drive.google.com")
+            ? image.replace(/https:\/\/drive\.google\.com\/file\/d\/([^/]+)\/view.*/, "https://drive.google.com/uc?id=$1")
+            : image;
 
     return (
         <li className='startup-card group'>

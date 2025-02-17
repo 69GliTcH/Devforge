@@ -60,10 +60,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         />
 
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
-          <div className="flex-between gap-5">
+          <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-5 p-4 rounded-lg">
             <Link
               href={`/user/${post.author?._id}`}
-              className="flex gap-2 items-center mb-3"
+              className="flex gap-2 items-center"
             >
               <Image
                 src={post.author.image}
@@ -75,14 +75,13 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
               <div>
                 <p className="text-20-medium">{post.author.name}</p>
-                <p className="text-16-medium !text-black-300">
-                  @{post.author.username}
-                </p>
+                <p className="text-16-medium !text-black-300">@{post.author.username}</p>
               </div>
             </Link>
 
-            <p className="category-tag">{post.category}</p>
+            <p className="category-tag sm:ml-auto">{post.category}</p>
           </div>
+
 
           <h3 className="text-30-bold">Project Details</h3>
           {parsedContent ? (

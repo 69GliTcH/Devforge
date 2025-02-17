@@ -3,7 +3,7 @@
 import React, { useState, useActionState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import MDEditor from "@uiw/react-md-editor";
+import MDEditor, { commands } from "@uiw/react-md-editor";
 import { Button } from "@/components/ui/button";
 import { Info, Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
@@ -11,7 +11,20 @@ import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
-import {Tooltip} from "@/components/ui/Tooltip";
+import { Tooltip } from "@/components/ui/Tooltip";
+const customCommands = [
+    commands.title1, // H1
+    commands.title2, // H2
+    commands.title3, // H3
+    commands.bold, // Bold
+    commands.italic, // Italic
+    commands.quote, // Blockquote
+    commands.unorderedListCommand, // Bulleted List
+    commands.orderedListCommand, // Numbered List
+    commands.link, // Link
+    commands.code, // Inline Code
+    commands.codeBlock, // Code Block
+];
 
 const StartupForm = () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -124,7 +137,7 @@ const StartupForm = () => {
             <div>
                 <label htmlFor="category" className="startup-form_label flex items-center gap-2">
                     Category
-                    <Tooltip content="Enter between 3 to 20 characters (Auto Uppercase)">
+                    <Tooltip content="Enter between 3 to 20 characters">
                         <Info className="size-4 text-gray-500 cursor-pointer" />
                     </Tooltip>
                 </label>
@@ -146,7 +159,7 @@ const StartupForm = () => {
             <div>
                 <label htmlFor="link" className="startup-form_label flex items-center gap-2">
                     Image URL
-                    <Tooltip content="Experimental: Share link from images uploaded on GitHub">
+                    <Tooltip content="GitHub or Google Drive Image Link">
                         <Info className="size-4 text-gray-500 cursor-pointer" />
                     </Tooltip>
                 </label>
@@ -171,13 +184,13 @@ const StartupForm = () => {
                 </label>
                 <MDEditor
                     value={pitch}
-                    onChange={(value) => setPitch(value as string)}
-                    id="pitch"
+                    onChange={(value) => setPitch(value || "")}
+                    commands={customCommands}
                     preview="edit"
                     height={300}
                     style={{ borderRadius: 20, overflow: "hidden" }}
                     textareaProps={{
-                        placeholder: "Briefly describe your project and what problem it solves",
+                        placeholder: "Briefly describe your project and what problem it solves. You can include code snippets, images, and URLs to illustrate your work.",
                         minLength: 10,
                     }}
                     previewOptions={{
